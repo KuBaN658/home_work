@@ -51,7 +51,7 @@ class Deck:
     def __str__(self):
         # Принцип работы данного метода прописан в 00_task_deck.md
         return f'deck[{len(self.cards)}]: ' + \
-               ', '.join([card.__str__() for card in self.cards])
+               ', '.join([str(card) for card in self.cards])
 
     def draw(self, qty):
         # Принцип работы данного метода прописан в 00_task_deck.md

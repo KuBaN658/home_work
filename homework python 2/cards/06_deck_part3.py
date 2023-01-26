@@ -1,5 +1,6 @@
 import random
 from typing import Self
+from pprint import pprint as pp
 
 # Начнем с создания карты
 # ♥ ♦ ♣ ♠
@@ -50,8 +51,9 @@ class Deck:
 
     def __str__(self):
         # Принцип работы данного метода прописан в 00_task_deck.md
-        return f'deck[{len(self.cards)}]: ' + \
-               ', '.join([str(card) for card in self.cards])
+        return f'deck[{len(self.cards)}]:\n' + \
+               ', '.join([str(card) if idx % 10 or not idx else str(card) + '\n' \
+                          for idx, card in enumerate(self.cards)])
 
     def draw(self, qty):
         # Принцип работы данного метода прописан в 00_task_deck.md
@@ -63,13 +65,13 @@ class Deck:
 
 
 if __name__ == '__main__':
-    deck = Deck()
-    deck.shuffle()
+    dck = Deck()
+    dck.shuffle()
     # Задачи - реализовать нативную работу с объектами:
     # 1. Вывод колоды в терминал:
-    print(deck)  # вместо print(deck.show())
+    print(dck)  # вместо print(deck.show())
 
-    card1, card2 = deck.draw(2)
+    card1, card2 = dck.draw(2)
     # 2. Вывод карты в терминал:
     print(card1)  # вместо print(card1.to_str())
     print(card2)

@@ -19,6 +19,20 @@ from rich.table import Table
 from rich.console import Console
 from deck_total import Deck
 
+
+def print_deck(dck: Deck) -> None:
+    """
+    осуществляет красивый вывод колоды
+    :return: None
+    """
+    table = Table(width=58)
+    table.add_column("Колода",
+                     style="black",
+                     justify="center")
+    table.add_row(str(dck))
+    console.print(table)
+
+
 style = "white on green"
 console = Console(width=58, style=style)
 
@@ -26,12 +40,7 @@ dck = Deck()
 dck.shuffle()
 # Задачи - реализовать нативную работу с объектами:
 # 1. Вывод колоды в терминал:
-table = Table(width=58)
-table.add_column("Колода",
-                 style="black",
-                 justify="center")
-table.add_row(str(dck))
-console.print(table)  # вместо print(deck.show())
+print_deck(dck)  # вместо print(deck.show())
 
 # 3. Сравнение карт:
 card1, card2 = dck.draw(2)
@@ -61,3 +70,4 @@ table.add_row(str(card1), result, str(card2))
 
 
 console.print(table)
+print_deck(dck)
